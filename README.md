@@ -1,8 +1,8 @@
 # qfold
 
-<img src="images/psvk.png" alt="PSVK" width="250"/>
-
 This project attempts to replicate the results in [*Fingerhuth, 2018*](https://arxiv.org/pdf/1810.13411.pdf).
+
+<img src="images/psvk.png" alt="PSVK" width="250"/>
 
 Structure:
 - [**`docs/`** ](https://github.com/slongwell/qfold/tree/master/docs) PDFs of project description, proposal, update, and report
