@@ -1,5 +1,7 @@
 # qfold
 
+<img src="images/psvk.png" alt="PSVK" width="250"/>
+
 This project attempts to replicate the results in [*Fingerhuth, 2018*](https://arxiv.org/pdf/1810.13411.pdf).
 
 Structure:
