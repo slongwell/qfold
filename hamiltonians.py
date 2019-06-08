@@ -1,29 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[223]:
-
-
-# jupyter nbconvert --to script hamiltonians.ipynb
-
+# This notebook is converted into a module with the following command:   
+# `jupyter nbconvert --to script hamiltonians.ipynb`
 
 # # General
 
-# In[224]:
+# In[1]:
 
 
 import numpy as np
 from pyquil.paulis import sI, sX, sY, sZ
-
-# inclusive range (for sums, products)
-def inc(start,stop):
-    return range(int(start),int(stop+1))
 
 global N
 global D
 global n
 global q
 
+# setter for global variables
 def init_ham(N_,D_):
     global N
     global D
@@ -34,6 +28,10 @@ def init_ham(N_,D_):
     if D_ == 2:
         n = 4*N_-10
         q = [sZ(x) for x in range(n)]
+        
+# inclusive range (for sums, products)
+def inc(start,stop):
+    return range(int(start),int(stop+1))
 
 
 # $\begin{array}{rl}
@@ -83,9 +81,6 @@ def XOR(x,y):
 
 # $\begin{array}{ll}
 # \texttt{XOR}(x,y) = x + y - 2xy & \text{} \\
-# \texttt{XOR}(x,y) = \bar{x}y + x\bar{y} & \text{disjunctive} \\
-# \texttt{XOR}(x,y) = (\bar{x}+\bar{y}) (x+y) & \text{conjunctive} \\
-# \texttt{XOR}(x,y) = x \oplus y & \text{Zhegalkin} \\
 # \end{array}$
 
 # In[41]:
@@ -119,7 +114,6 @@ def d(k,t):
 # $k_o = (k+D) \text{ mod } (2D)$
 # 
 # 2D:
-# - should $t=1$, or $t=0$?
 # 
 # $d_k^t = 
 # \cases{
@@ -128,7 +122,7 @@ def d(k,t):
 # q_{4t+k-6} & else
 # }$
 
-# In[218]:
+# In[ ]:
 
 
 # return sum string from list of bits
@@ -151,6 +145,12 @@ def S(lst, verbose=False):
                 print(i*' ', j,j-1)
             lst[j-1],lst[j-2] = HA(lst[j-1],lst[j-2])
     return lst[:len_out]
+
+
+# ![adder](images/adder.png)
+
+# In[2]:
+
 
 def s(k,r,i,ii):
     lst = [d(k,t) for t in range(4)]
@@ -194,7 +194,7 @@ def H_overlap(lambda_overlap):
 # $\boxed{
 # H_{overlap} = \lambda_{overlap} \sum_{i=0}^{N-3} \sum_{i'=1}^{\lfloor \frac{1}{2}(N-i-1) \rfloor} h_{overlap}(i,i+2i')
 # }$
-# - To set $\lambda_{overlap}$, see *Babbush2013: 7.2.4*
+# - To set $\lambda_{overlap}$, see [*Babbush2013: 7.2.4*](https://arxiv.org/pdf/1211.3422.pdf)
 
 # ## $H_{pair}$
 
@@ -247,7 +247,6 @@ def t10(k,i,ii):
 
 
 # $t_{10}(k,i,i') = \texttt{XOR}(s_{k}^1(i,i'),s_{k_o}^1(i,i'))$
-# - sum string 0- or 1-indexed?
 
 # In[ ]:
 
@@ -304,6 +303,8 @@ def a(k,i,ii):
 
 
 # $a_k(i,i') = t_0(k,i,i') * t_1(k,i,i')$
+# 
+# ![](images/adjacency.png)
 
 # ----
 
@@ -317,8 +318,8 @@ def H_pair(P):
 
 
 # $\boxed{H_{pair} = \sum_{i=1}^{N-3} \sum_{i'=1}^{\lfloor \frac{1}{2}(N-i-1)\rfloor} P_{i,1+i+2i'} \sum_{k=1}^{D} a_k(i,1+i+2i')}$
-# - *Fingerhuth 2018* is missing floor, has lower case $N$ in first sum
-# - *Babbush 2013*, eqn (40)
+# - [*Fingerhuth 2018*](https://arxiv.org/pdf/1810.13411.pdf) is missing floor, has lower case $N$ in first sum
+# - [*Babbush 2013*, eqn (40)](https://arxiv.org/pdf/1211.3422.pdf)
 
 # # $H_{cost}$
 
