@@ -1,6 +1,6 @@
 # qfold
 
-This project attempts to replicate the results in [*Fingerhuth, 2018*](https://arxiv.org/pdf/1810.13411.pdf), which explored folding the 4 residue 'protein' PSVK on a 2D-lattice with a Quantum Alternating Operator Ansatz (QAOA).
+This project attempts to replicate the results in [*Fingerhuth, 2018*](https://arxiv.org/pdf/1810.13411.pdf), which explored folding the 4 residue 'protein' PSVK on a 2D-lattice using a Quantum Alternating Operator Ansatz (QAOA).
 
 <img src="images/psvk.png" alt="PSVK" width="250"/>
 
