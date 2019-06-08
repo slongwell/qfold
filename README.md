@@ -4,7 +4,6 @@ This project attempts to replicate the results in [*Fingerhuth, 2018*](https://a
 
 <img src="images/psvk.png" alt="PSVK" width="250"/>
 
-Structure:
 - [**`docs/`** ](https://github.com/slongwell/qfold/tree/master/docs) PDFs of project description, proposal, update, and report
 - [**`mat/`** ](https://github.com/slongwell/qfold/tree/master/mat) Contact energy matrices (Miyazawa-Jernigan) and corresponding indices (adapted from [LightDock](https://github.com/brianjimenez/lightdock/blob/master/docs/README.md))
 - [**`images/`** ](https://github.com/slongwell/qfold/tree/master/images) Images used within notebooks and readme
