@@ -15,8 +15,8 @@ Structure:
 - [**`lattice.py`** ](https://github.com/slongwell/qfold/blob/master/lattice.py) Dictionaries that encode 2D-lattice scheme and function for plotting protein on 2D-lattice
 
 Requirements:
-- pyquil
 - jupyter
+- pyquil
 - numpy
 - pandas
 - scipy
