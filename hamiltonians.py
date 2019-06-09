@@ -79,9 +79,7 @@ def XOR(x,y):
     return x + y - 2*x*y
 
 
-# $\begin{array}{ll}
-# \texttt{XOR}(x,y) = x + y - 2xy & \text{} \\
-# \end{array}$
+# $\texttt{XOR}(x,y) = x + y - 2xy$
 
 # In[41]:
 
@@ -265,11 +263,7 @@ def t12(k,i,ii):
     return sum(t120(k,i,ii,p) * t121(k,i,ii,p) * t122(k,i,ii,p) * t123(k,i,ii,p) for p in inc(2,np.ceil(np.log2(ii-i)))) 
 
 
-# $t_{12}(k,i,i') = \sum_{p=2}^{\lceil log_2(i'-i) \rceil}
-#                               t_{120}(k,i,i')
-#                             * t_{121}(k,i,i')
-#                             * t_{122}(k,i,i')
-#                             * t_{123}(k,i,i')$
+# $t_{12}(k,i,i') = \sum_{p=2}^{\lceil log_2(i'-i) \rceil} t_{120}(k,i,i') * t_{121}(k,i,i')* t_{122}(k,i,i')* t_{123}(k,i,i')$
 
 # ----
 
@@ -337,17 +331,6 @@ def H_cost(lambda_overlap,P):
 # -----------
 # # $H_{mixer}$ Variants:
 
-# In[10]:
-
-
-def SWA(i,ii):
-    return 0.5*(sX(i)*sX(ii) + sY(i)*sY(ii))
-
-
-# $\texttt{SWA}_{i,i'} = \frac{1}{2}(X_i X_{i'} + Y_i Y_{i'})$
-
-# ----
-
 # In[1]:
 
 
@@ -360,15 +343,25 @@ def X_mixer():
 
 # ----
 
+# In[10]:
+
+
+def XY(i,ii):
+    return 0.5*(sX(i)*sX(ii) + sY(i)*sY(ii))
+
+
+# $\texttt{XY}_{i,i'} = \frac{1}{2}(X_i X_{i'} + Y_i Y_{i'})$
+# - has similar properties to a $\texttt{SWAP}$ gate (actually redefined as $\texttt{SWAP}$ in *Fingerhuth 2018*)
+
 # In[ ]:
 
 
 def M(t):
     global n
-    return sum(SWA(i,ii) for i in inc(0,n-2) for ii in inc(i+1, n-1))
+    return sum(XY(i,ii) for i in inc(0,n-2) for ii in inc(i+1, n-1))
 
 
-# $M_t = \sum_{i=0}^{n-2} \sum_{i'=i+1}^{n-1} \texttt{SWA}_{i,i'}$
+# $M_t = \sum_{i=0}^{n-2} \sum_{i'=i+1}^{n-1} \texttt{XY}_{i,i'}$
 
 # In[1]:
 
